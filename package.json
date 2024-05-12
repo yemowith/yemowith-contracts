@@ -1,0 +1,34 @@
+{
+  "name": "@yemowith/contracts",
+  "version": "1.0.0",
+  "description": "yemowith contract, include all tools you need to build a dapps or wallets project ",
+  "main": "index.js",
+  "files": [
+    "**/*.sol",
+    "/build/contracts/*.json",
+    "!/mocks/**/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yemowith/yemowith-contracts.git"
+  },
+  "keywords": [
+    "yemowith",
+    "contracts",
+    "dapp",
+    "tools"
+  ],
+  "author": "yemowith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yemowith/yemowith-contracts/issues"
+  },
+  "homepage": "https://github.com/yemowith/yemowith-contracts#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.3"
+  }
+}
