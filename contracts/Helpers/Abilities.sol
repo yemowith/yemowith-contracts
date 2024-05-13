@@ -40,7 +40,7 @@ abstract contract Initializable is Ownable {
         _initialized = true;
     }
 
-    function isInitialized() external view returns (bool) {
+    function isInitialized() internal view returns (bool) {
         return _initialized;
     }
 }
