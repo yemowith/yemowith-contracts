@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {Initializable} from "../../../../Helpers/Abilities.sol";
-import {BaseDeployer} from "../../../Deployer/BaseDeployer.sol";
+import {Initializable} from "contracts/Helpers/Abilities.sol";
+import {BaseDeployer} from "contracts/Libraries/Deployer/BaseDeployer.sol";
 
 abstract contract BaseObject is Initializable {
     address private _superAdmin;
