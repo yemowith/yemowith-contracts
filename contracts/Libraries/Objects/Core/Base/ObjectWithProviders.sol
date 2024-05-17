@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {BaseObject} from "./BaseObject.sol";
-import {BaseDefine} from "../Defines/BaseDefine.sol"; // Import the BaseDefine contract
+import { BaseObject } from "./BaseObject.sol";
+import { BaseDefine } from "../Defines/BaseDefine.sol"; // Import the BaseDefine contract
 
 abstract contract ObjectWithProviders is BaseObject {
     // Define a struct to hold BaseDefine objects and their associated details
@@ -18,7 +18,7 @@ abstract contract ObjectWithProviders is BaseObject {
     function createDefine(string memory _name) public {
         BaseDefine newDefine = new BaseDefine(_name); // Create a new BaseDefine object
         defines.push(
-            DefineEntry({defineObject: newDefine, creator: msg.sender})
+            DefineEntry({ defineObject: newDefine, creator: msg.sender })
         ); // Add the new object to the list with the creator's address
     }
 

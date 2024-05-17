@@ -10,7 +10,7 @@ contract Proxy {
 
     fallback() external payable {
         address target = implt;
-        require(target != address(0), 'implt not setted');
+        require(target != address(0), "implt not setted");
         assembly {
             calldatacopy(0, 0, calldatasize())
             let result := delegatecall(gas(), target, 0, calldatasize(), 0, 0)

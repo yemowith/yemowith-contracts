@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {Ownable, Pausable, Lockable} from "../../helpers/abilities.sol";
+import { Ownable, Pausable, Lockable } from "../../helpers/abilities.sol";
 
 contract Executor is Ownable, Pausable, Lockable {
     constructor() {}
@@ -27,9 +27,9 @@ contract Executor is Ownable, Pausable, Lockable {
         address target,
         bytes calldata data
     ) external payable onlyOwner returns (bool, bytes memory) {
-        (bool success, bytes memory returnData) = target.call{value: msg.value}(
-            data
-        );
+        (bool success, bytes memory returnData) = target.call{
+            value: msg.value
+        }(data);
         require(success, "Execution failed");
 
         return (success, returnData);
@@ -48,7 +48,7 @@ contract Executor is Ownable, Pausable, Lockable {
             if (!success && !calls[i].allowFailure) {
                 revert("One of the executions failed without allowance");
             }
-            results[i] = Result({success: success, returnData: returnData});
+            results[i] = Result({ success: success, returnData: returnData });
         }
     }
 
@@ -62,7 +62,7 @@ contract Executor is Ownable, Pausable, Lockable {
             (bool success, bytes memory returnData) = calls[i]
                 .target
                 .staticcall(calls[i].callData);
-            results[i] = Result({success: success, returnData: returnData});
+            results[i] = Result({ success: success, returnData: returnData });
         }
     }
 }

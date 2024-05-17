@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {Initializable} from "contracts/Helpers/Abilities.sol";
+import { Initializable } from "contracts/Helpers/Abilities.sol";
 
 contract BaseEncoder is Initializable {
     bytes32 private _salt;

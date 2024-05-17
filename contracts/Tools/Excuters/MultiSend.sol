@@ -30,7 +30,7 @@ contract MultiSend {
     function multiSend(bytes memory transactions) public payable {
         require(
             address(this) != MULTISEND_SINGLETON,
-            'MultiSend should only be called via delegatecall'
+            "MultiSend should only be called via delegatecall"
         );
         /* solhint-disable no-inline-assembly */
         assembly {

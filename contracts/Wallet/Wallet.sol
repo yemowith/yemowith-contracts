@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "../Libraries/Objects/Core/Base/BaseObject.sol";
 
-contract BaseWallet is BaseObject {
+contract Wallet is BaseObject {
     mapping(bytes4 => address) public enabledModules;
     mapping(address => bool) public authorised;
 
@@ -23,7 +23,7 @@ contract BaseWallet is BaseObject {
         bytes calldata _data
     ) external moduleOnly returns (bytes memory _result) {
         bool success;
-        (success, _result) = _target.call{value: _value}(_data);
+        (success, _result) = _target.call{ value: _value }(_data);
         if (!success) {
             // solhint-disable-next-line no-inline-assembly
             assembly {

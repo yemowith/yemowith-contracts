@@ -29,7 +29,8 @@
   "homepage": "https://github.com/yemowith/yemowith-contracts#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "hardhat": "^2.22.3"
+    "hardhat": "^2.22.3",
+    "prettier-plugin-solidity": "^1.3.1"
   },
   "dependencies": {
     "truffle": "^5.11.5"
