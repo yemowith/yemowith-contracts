@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import { Initializable } from "contracts/Helpers/Abilities.sol";
+import "contracts/Core/Accessblity/Basic/Initializable.sol";
 
 contract BaseEncoder is Initializable {
     bytes32 private _salt;
@@ -18,7 +18,7 @@ contract BaseEncoder is Initializable {
     function _encode(
         bytes memory data,
         bytes32 additionalParam
-    ) internal view onlyInitialized returns (bytes memory) {
+    ) internal view returns (bytes memory) {
         require(data.length > 0, "Data cannot be empty");
         return abi.encodePacked(_salt, additionalParam, data);
     }
@@ -26,14 +26,14 @@ contract BaseEncoder is Initializable {
     function encode(
         bytes memory data,
         bytes32 additionalParam
-    ) external view onlyInitialized returns (bytes memory) {
+    ) external view returns (bytes memory) {
         return _encode(data, additionalParam);
     }
 
     function _decode(
         bytes memory encodedData,
         bytes32 additionalParam
-    ) internal view onlyInitialized returns (bytes memory) {
+    ) internal view returns (bytes memory) {
         require(
             encodedData.length > 32,
             "Encoded data is too short to contain salt and additional parameters"

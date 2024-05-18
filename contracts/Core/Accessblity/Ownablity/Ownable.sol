@@ -19,28 +19,10 @@ abstract contract Ownable {
         return _owner;
     }
 
-    function changeOwner(address newOwner) public onlyOwner {
+    // Renamed and visibility set to internal
+    function _changeOwner(address newOwner) internal onlyOwner {
         require(newOwner != address(0), "Invalid new owner address.");
         emit OwnerChanged(_owner, newOwner);
         _owner = newOwner;
-    }
-}
-
-abstract contract Initializable is Ownable {
-    bool private _initialized;
-
-    modifier onlyInitialized() {
-        require(_initialized, "Contract not initialized");
-        _;
-    }
-
-    function _initialize(address owner) internal onlyOwner {
-        require(!_initialized, "Contract already initialized");
-        changeOwner(owner);
-        _initialized = true;
-    }
-
-    function isInitialized() internal view returns (bool) {
-        return _initialized;
     }
 }
