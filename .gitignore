@@ -24,7 +24,6 @@ flat
 
 .DS_Store
 .node-xmlhttprequest-sync-*
-.vscode
 .idea
 .outputParameter
 
