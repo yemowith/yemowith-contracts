@@ -2,9 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "contracts/Core/Accessblity/BaseAccessible.sol";
-import "contracts/Core/Accessblity/AccessControl/AccessControl.sol";
 
-contract Executor is BaseAccessible, AccessControl {
+contract Executor is BaseAccessible {
     bytes32 public constant EXECUTOR_ROLE = keccak256("EXECUTOR_ROLE");
     bytes32 public constant STATIC_CALLER_ROLE =
         keccak256("STATIC_CALLER_ROLE");

@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Templates/Proxies/Proxy.sol";
 
 contract ContractManager is BaseAccessible {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
