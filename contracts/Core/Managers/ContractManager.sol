@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../Proxy.sol";
-import "./Executor.sol";
 import "contracts/Core/Accessblity/BaseAccessible.sol";
 
 contract ContractManager is BaseAccessible {

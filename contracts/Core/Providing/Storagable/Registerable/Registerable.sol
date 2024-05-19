@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Providing/Availabilities/Providable.sol";
+import "contracts/Core/Accessblity/BaseAccessible.sol";
 
-contract Registerable is Providable {
+contract Registerable is BaseAccessible {
     // Mapping to store addresses of different registry contracts
     mapping(bytes32 => address) public registries;
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../Basic/Initializable.sol";
+import "../Initializable/Initializable.sol";
 
 abstract contract Adminable is Initializable {
     address private _superAdmin;

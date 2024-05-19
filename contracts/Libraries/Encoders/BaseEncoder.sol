@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/Basic/Initializable.sol";
+import "contracts/Core/Accessblity/BaseAccessible.sol";
 
-contract BaseEncoder is Initializable {
+contract BaseEncoder is BaseAccessible {
     bytes32 private _salt;
 
     function initialize(address owner) external {

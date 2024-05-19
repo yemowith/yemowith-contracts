@@ -2,9 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "contracts/Core/Accessblity/BaseAccessible.sol";
-import "contracts/Libraries/Encoders/BaseEncoder.sol";
 
-contract AccountRegistry is BaseAccessible, BaseEncoder {
+contract AccountsManager is BaseAccessible {
     struct Account {
         uint256 id;
         address externalAddress;
