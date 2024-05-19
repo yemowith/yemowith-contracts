@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../Proxy.sol";
+import "./Executor.sol";
 import "contracts/Core/Accessblity/BaseAccessible.sol";
 
 contract ContractManager is BaseAccessible {
@@ -98,7 +99,7 @@ contract ContractManager is BaseAccessible {
     function proxyedDeploy(
         uint256 contractCodeId,
         bytes32 _salt
-    ) external onlyRole(DEPLOYER_ROLE) returns (address) {
+    ) external onlyAvailable onlyRole(DEPLOYER_ROLE) returns (address) {
         require(
             contractCodeId < contractsCodes.length,
             "Contract code does not exist"

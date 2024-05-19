@@ -9,6 +9,12 @@ contract Statusable is Lockable, Pausable {
     // Event for indicating successful initialization of Statusable
     event StatusableInitialized(address indexed owner);
 
+    modifier onlyAvailable() {
+        require(!isLocked(), "Contract is locked");
+        require(!isPaused(), "Contract is paused");
+        _;
+    }
+
     // Override the _initialize function to handle multiple inheritance
     function _initialize(
         address owner
