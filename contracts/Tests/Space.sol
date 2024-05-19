@@ -6,5 +6,6 @@ import "contracts/Core/Accessblity/BaseAccessible.sol";
 contract Space is BaseAccessible {
     address public _accountRegistry;
     address public _contractManager;
+    address public _gatewaysManagement;
     address public _encoder;
 }
