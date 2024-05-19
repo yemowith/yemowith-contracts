@@ -8,12 +8,7 @@ import "./Baseable/Baseable.sol";
 
 contract BaseAvailability is Eventable, Encodable, Baseable {
     // Constructor to initialize the Providable contract
-    constructor(
-        address _owner,
-        address _eventableOwner,
-        address _encodableOwner,
-        address _registerableOwner
-    ) {
+    constructor(address _owner) {
         _initializeProvidable(
             _owner,
             _eventableOwner,

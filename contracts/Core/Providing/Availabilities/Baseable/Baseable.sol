@@ -13,9 +13,10 @@ contract Baseable is BaseAccessible, Statusable {
         _mainRole = role;
     }
 
-    function _initializeBaseable(address owner) internal {
-        BaseAccessible._initialize(owner);
-        Statusable._initialize(owner);
+    function _initializeBaseable(address _owner, address _locker , address _pauser, ) internal {
+        BaseAccessible._initialize(_owner);
+        Statusable._initialize(_owner);
+        
         _setupRole(_mainRole, owner);
     }
 
@@ -54,6 +55,6 @@ contract Baseable is BaseAccessible, Statusable {
         Statusable._unpause(); // Unpause the contract with pauser role permission
     }
 
-    
+
 
 }
