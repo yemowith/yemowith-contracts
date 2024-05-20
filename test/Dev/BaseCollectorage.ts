@@ -1,6 +1,11 @@
 class BaseCollectorage {
   private indexes: Indexes = {};
   private items: Items = {};
+  private helper: CollectorageHelper;
+
+  constructor() {
+    this.helper = new CollectorageHelper(this);
+  }
 
   private addToIndex(item: Item) {
     item.keywords.forEach((keyword) => {
@@ -16,7 +21,7 @@ class BaseCollectorage {
     this.addToIndex(item);
   }
 
-  private createItem(
+  public createItem(
     address: string,
     keywords: string[],
     type: "Collect" | "Document",
@@ -50,19 +55,23 @@ class BaseCollectorage {
     return this.attachMethods(newItem);
   }
 
-  attachMethods = (item: Item) => {
+  private attachMethods(item: Item): Item {
     const self = this;
+
+    const createCollect = (address: string, keywords: string[]): Item => {
+      return self.helper.createCollect(address, keywords);
+    };
 
     const createSubCollect = (
       address: string,
       keywords: string[],
       parentKey: string,
     ): Item => {
-      return self.createSubCollect(address, keywords, parentKey);
+      return self.helper.createSubCollect(address, keywords, parentKey);
     };
 
     const createDocument = (address: string, keywords: string[]): Item => {
-      return self.createDocument(address, keywords);
+      return self.helper.createDocument(address, keywords);
     };
 
     const createSubDocument = (
@@ -70,23 +79,24 @@ class BaseCollectorage {
       keywords: string[],
       parentKey: string,
     ): Item => {
-      return self.createSubDocument(address, keywords, parentKey);
+      return self.helper.createSubDocument(address, keywords, parentKey);
     };
 
     const searchByKeyword = (keyword: string): string[] => {
-      return self.searchByKeyword(keyword);
+      return self.helper.searchByKeyword(keyword);
     };
 
     const searchByParent = (parentKey: string): string[] => {
-      return self.searchByParent(parentKey);
+      return self.helper.searchByParent(parentKey);
     };
 
     const searchByChild = (childKey: string): string | null => {
-      return self.searchByChild(childKey);
+      return self.helper.searchByChild(childKey);
     };
 
     return {
       ...item,
+      createCollect,
       createSubCollect,
       createDocument,
       createSubDocument,
@@ -94,7 +104,7 @@ class BaseCollectorage {
       searchByParent,
       searchByChild,
     };
-  };
+  }
 
   public createCollect(address: string, keywords: string[]): Item {
     return this.createItem(address, keywords, "Collect");

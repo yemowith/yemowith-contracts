@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "contracts/Core/Helpers/Executors/Executor.sol";
 
-abstract contract WithExcuter is Executor {
+abstract contract WithExecutor is Executor {
     function execute(
         address target,
         bytes memory data
