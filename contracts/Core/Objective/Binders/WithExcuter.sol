@@ -1,35 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessControl.sol";
+import "contracts/Core/Helpers/Executors/Executor.sol";
 
-contract Executor is BaseAccessControl {
-    bytes32 public constant EXECUTOR_ROLE = keccak256("EXECUTOR_ROLE");
-    bytes32 public constant STATIC_CALLER_ROLE =
-        keccak256("STATIC_CALLER_ROLE");
-    bytes32 public constant MULTI_EXECUTOR_ROLE =
-        keccak256("MULTI_EXECUTOR_ROLE");
-
-    function _execute(
-        address target,
-        bytes memory data
-    ) internal onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
-        (bool success, bytes memory result) = target.call(data);
-        require(success, "Execution failed");
-        return result;
-    }
-
+abstract contract WithExcuter is Executor {
     function execute(
         address target,
         bytes memory data
-    ) external onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+    ) external override onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
         return _execute(target, data);
     }
 
     function multiExecute(
         address[] memory targets,
         bytes[] memory data
-    ) external onlyRole(MULTI_EXECUTOR_ROLE) returns (bytes[] memory) {
+    ) external override onlyRole(MULTI_EXECUTOR_ROLE) returns (bytes[] memory) {
         require(
             targets.length == data.length,
             "Targets and data length mismatch"
@@ -44,7 +29,7 @@ contract Executor is BaseAccessControl {
     function call(
         address target,
         bytes memory data
-    ) external onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+    ) external override onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
         (bool success, bytes memory result) = target.call(data);
         require(success, "Call failed");
         return result;
@@ -53,7 +38,13 @@ contract Executor is BaseAccessControl {
     function callStatic(
         address target,
         bytes memory data
-    ) external view onlyRole(STATIC_CALLER_ROLE) returns (bytes memory) {
+    )
+        external
+        view
+        override
+        onlyRole(STATIC_CALLER_ROLE)
+        returns (bytes memory)
+    {
         (bool success, bytes memory result) = target.staticcall(data);
         require(success, "Static call failed");
         return result;
@@ -62,7 +53,7 @@ contract Executor is BaseAccessControl {
     function getEncodedData(
         string memory signature,
         bytes memory params
-    ) external pure returns (bytes memory) {
+    ) external pure override returns (bytes memory) {
         return abi.encodeWithSignature(signature, params);
     }
 
@@ -70,7 +61,7 @@ contract Executor is BaseAccessControl {
         address target,
         string memory signature,
         bytes memory params
-    ) external pure returns (address, bytes memory) {
+    ) external pure override returns (address, bytes memory) {
         return (target, abi.encodeWithSignature(signature, params));
     }
 }

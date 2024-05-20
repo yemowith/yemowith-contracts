@@ -22,5 +22,5 @@
     "./utils",
     "./utils/_base.ts"
   ],
-  "files": ["./hardhat.config.ts", "global.d.ts"]
+  "files": ["./hardhat.config.ts", "global.d.ts", "./**/*.d.ts"]
 }
