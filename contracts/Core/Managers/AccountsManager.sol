@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Accessblity/BaseAccessControl.sol";
 
-contract AccountsManager is BaseAccessible {
+contract AccountsManager is BaseAccessControl {
     /*
     struct Account {
         uint256 id;

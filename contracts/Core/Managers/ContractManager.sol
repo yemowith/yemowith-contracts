@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Accessblity/BaseAccessControl.sol";
 import "contracts/Core/Templates/Proxies/Proxy.sol";
 
-contract ContractManager is BaseAccessible {
-    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+contract ContractManager is BaseAccessControl {
     bytes32 public constant DEPLOYER_ROLE = keccak256("DEPLOYER_ROLE");
 
     struct ContractCode {
@@ -39,25 +38,13 @@ contract ContractManager is BaseAccessible {
         uint256 contractCodeId
     );
 
-    constructor() {
-        // Constructor is now minimal
-    }
-
-    function _initialize(address owner, bytes32 _salt) internal {
-        super._initialize(owner);
-        salt = _salt;
-        _setupRole(DEFAULT_ADMIN_ROLE, owner);
-        _setupRole(ADMIN_ROLE, owner);
-        _setupRole(DEPLOYER_ROLE, owner);
-        _setupRole(LOCKER_ROLE, owner);
-        _setupRole(PAUSER_ROLE, owner);
-    }
+    constructor(address owner) BaseAccessControl() {}
 
     function addContractCode(
         string memory contractType,
         bytes memory bytecode,
         string memory code
-    ) external onlyInitialized onlyRole(ADMIN_ROLE) {
+    ) external whenLockedOrPaused onlyRole(ADMIN_ROLE) {
         bytes memory encodedBytecode = _encode(bytecode, salt);
         uint256 id = contractsCodes.length;
         contractsCodes.push(
@@ -93,7 +80,7 @@ contract ContractManager is BaseAccessible {
     function proxyedDeploy(
         uint256 contractCodeId,
         bytes32 _salt
-    ) external onlyAvailable onlyRole(DEPLOYER_ROLE) returns (address) {
+    ) external whenLockedOrPaused onlyRole(DEPLOYER_ROLE) returns (address) {
         require(
             contractCodeId < contractsCodes.length,
             "Contract code does not exist"
@@ -156,21 +143,5 @@ contract ContractManager is BaseAccessible {
             decodedData[i] = data[i];
         }
         return decodedData;
-    }
-
-    function lock(uint256 numberOfBlocks) external onlyRole(LOCKER_ROLE) {
-        _lock(numberOfBlocks);
-    }
-
-    function unlock() external onlyRole(LOCKER_ROLE) {
-        _unlock();
-    }
-
-    function pause() external onlyRole(PAUSER_ROLE) {
-        _pause();
-    }
-
-    function unpause() external onlyRole(PAUSER_ROLE) {
-        _unpause();
     }
 }

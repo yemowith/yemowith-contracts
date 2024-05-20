@@ -1,12 +1,24 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-interface-generator";
+import '@typechain/hardhat'
+import '@nomicfoundation/hardhat-ethers'
+import '@nomicfoundation/hardhat-chai-matchers'
 
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
         version: "0.8.0",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1000,
+          },
+        },
+      },
+      {
+        version: "0.8.20",
         settings: {
           optimizer: {
             enabled: true,

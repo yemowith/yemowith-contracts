@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../Ownablity/Adminable.sol"; // Ensure the path is correct
-
-abstract contract Pausable is Adminable {
+abstract contract Pausable {
     bool private _isPaused;
 
     event Paused();
@@ -14,17 +12,12 @@ abstract contract Pausable is Adminable {
         _;
     }
 
-    function _initialize(address owner) internal virtual override {
-        super._initialize(owner); // Initialize the base Adminable contract
-        _isPaused = false; // Initially, the contract is not paused
-    }
-
-    function _pause() internal virtual onlySuperAdmin {
+    function _pause() internal virtual {
         _isPaused = true;
         emit Paused();
     }
 
-    function _unpause() internal virtual onlySuperAdmin {
+    function _unpause() internal virtual {
         _isPaused = false;
         emit Unpaused();
     }

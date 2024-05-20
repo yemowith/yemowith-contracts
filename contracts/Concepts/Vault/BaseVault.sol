@@ -2,9 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "./PairsManager.sol";
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Accessblity/BaseAccessControl.sol";
 import "contracts/Core/Security/CustomReentrancyGuard.sol";
-import "contracts/Interfaces/ERC20/IERC20.sol";
 
 /*
 contract InsuranceToken is IERC20 {
@@ -22,7 +21,7 @@ contract InsuranceToken is IERC20 {
     }
 }
 */
-contract BaseVault is BaseAccessible, CustomReentrancyGuard {
+contract BaseVault is BaseAccessControl, CustomReentrancyGuard {
     /*
     PairsManager public pairsManager;
     mapping(uint256 => InsuranceToken) public insuranceBaseTokens;

@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Interfaces/ERC20/IERC20.sol";
-import "contracts/Core/Templates/Tokens/ERC20.sol";
-import { PairsManager } from "./PairsManager.sol";
 import { BaseVault } from "./BaseVault.sol";
 
 contract MainVault is BaseVault {

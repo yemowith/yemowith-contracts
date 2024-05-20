@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Accessblity/BaseAccessControl.sol";
 
-contract GatewaysManagement is BaseAccessible {
+contract GatewaysManagement is BaseAccessControl {
+    /*
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
     struct Node {
@@ -66,4 +67,6 @@ contract GatewaysManagement is BaseAccessible {
     function getProviders() external view returns (address[] memory) {
         return providerList;
     }
+
+    */
 }

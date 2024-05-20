@@ -1,17 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
-import "contracts/Core/Utils/ContextContract.sol"; // Updated import path
+import "../Ownablity/OwnableContract.sol";
 
-abstract contract AccessControl is
-    ContextContract,
-    ERC165 // Inheriting from ContextContract
-{
+contract AccessControl is OwnableContract {
     using EnumerableSet for EnumerableSet.AddressSet;
-    using Strings for uint256;
 
     struct RoleData {
         EnumerableSet.AddressSet members;
@@ -21,6 +15,8 @@ abstract contract AccessControl is
     mapping(bytes32 => RoleData) private _roles;
 
     bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
+    bytes32 public constant OWNER_ROLE = keccak256("OWNER_ROLE");
+    bytes32 public constant SUPER_ADMIN_ROLE = keccak256("SUPER_ADMIN_ROLE");
 
     event RoleGranted(
         bytes32 indexed role,
@@ -39,69 +35,88 @@ abstract contract AccessControl is
     );
 
     modifier onlyRole(bytes32 role) {
-        _checkRole(role, _msg_Sender()); // Using _msg_Sender() from ContextContract
+        require(
+            hasRole(role, msg.sender),
+            "AccessControl: sender does not have role"
+        );
         _;
     }
 
-    function supportsInterface(
-        bytes4 interfaceId
-    ) public view virtual override returns (bool) {
-        return
-            interfaceId == type(IERC165).interfaceId ||
-            super.supportsInterface(interfaceId);
+    constructor(
+        address owner,
+        address superAdmin
+    ) OwnableContract(owner, superAdmin) {
+        _setupRole(DEFAULT_ADMIN_ROLE, owner);
+        _setupRole(OWNER_ROLE, owner);
+        _setupRole(SUPER_ADMIN_ROLE, superAdmin);
     }
 
     function hasRole(bytes32 role, address account) public view returns (bool) {
         return _roles[role].members.contains(account);
     }
 
-    function getRoleAdmin(bytes32 role) public view returns (bytes32) {
+    function getRoleAdmin(bytes32 role) internal view returns (bytes32) {
         return _roles[role].adminRole;
     }
 
-    function _grantRole(
+    function grantRole(
         bytes32 role,
         address account
-    ) internal virtual onlyRole(getRoleAdmin(role)) {
-        if (_roles[role].members.add(account)) {
-            emit RoleGranted(role, account, _msg_Sender());
-        }
+    ) public onlyRole(getRoleAdmin(role)) {
+        _grantRole(role, account);
     }
 
-    function _revokeRole(
+    function revokeRole(
         bytes32 role,
         address account
-    ) internal virtual onlyRole(getRoleAdmin(role)) {
-        if (_roles[role].members.remove(account)) {
-            emit RoleRevoked(role, account, _msg_Sender());
-        }
+    ) public onlyRole(getRoleAdmin(role)) {
+        _revokeRole(role, account);
     }
 
-    function _renounceRole(bytes32 role, address account) internal virtual {
+    function renounceRole(bytes32 role, address account) public {
         require(
-            account == _msg_Sender(),
+            account == msg.sender,
             "AccessControl: can only renounce roles for self"
         );
         _revokeRole(role, account);
     }
 
-    function _setupRole(bytes32 role, address account) internal virtual {
-        _grantRole(role, account);
-    }
-
-    function _setRoleAdmin(
+    function setRoleAdmin(
         bytes32 role,
         bytes32 newAdminRole
-    ) internal virtual {
+    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
         bytes32 previousAdminRole = getRoleAdmin(role);
         _roles[role].adminRole = newAdminRole;
         emit RoleAdminChanged(role, previousAdminRole, newAdminRole);
     }
 
-    function _checkRole(bytes32 role, address account) internal view {
-        require(
-            hasRole(role, account),
-            "AccessControl: account does not have role"
-        );
+    function _setupRole(bytes32 role, address account) internal {
+        _grantRole(role, account);
+    }
+
+    function _grantRole(bytes32 role, address account) internal {
+        if (_roles[role].members.add(account)) {
+            emit RoleGranted(role, account, msg.sender);
+        }
+    }
+
+    function _revokeRole(bytes32 role, address account) internal {
+        if (_roles[role].members.remove(account)) {
+            emit RoleRevoked(role, account, msg.sender);
+        }
+    }
+
+    function _changeOwner(address newOwner) internal virtual override {
+        address oldOwner = getOwner();
+        super._changeOwner(newOwner);
+        _revokeRole(OWNER_ROLE, oldOwner);
+        _grantRole(OWNER_ROLE, newOwner);
+    }
+
+    function _setSuperAdmin(address newSuperAdmin) internal virtual override {
+        address oldSuperAdmin = getSuperAdmin();
+        super._setSuperAdmin(newSuperAdmin);
+        _revokeRole(SUPER_ADMIN_ROLE, oldSuperAdmin);
+        _grantRole(SUPER_ADMIN_ROLE, newSuperAdmin);
     }
 }

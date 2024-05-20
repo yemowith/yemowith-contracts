@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Accessblity/BaseAccessControl.sol";
 
-contract BaseModule is BaseAccessible {
+contract BaseModule is BaseAccessControl {
     event ModuleEnabled(address indexed module);
     event ModuleDisabled(address indexed module);
 

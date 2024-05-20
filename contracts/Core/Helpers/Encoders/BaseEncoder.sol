@@ -1,19 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
-
-contract BaseEncoder is BaseAccessible {
+contract BaseEncoder {
     bytes32 private _salt;
-
-    function initialize(address owner) external {
-        _initialize(owner);
-        _initializeSalt(owner);
-    }
-
-    function _initializeSalt(address owner) private {
-        _salt = keccak256(abi.encodePacked(owner));
-    }
 
     function _encode(
         bytes memory data,
@@ -21,13 +10,6 @@ contract BaseEncoder is BaseAccessible {
     ) internal view returns (bytes memory) {
         require(data.length > 0, "Data cannot be empty");
         return abi.encodePacked(_salt, additionalParam, data);
-    }
-
-    function encode(
-        bytes memory data,
-        bytes32 additionalParam
-    ) external view returns (bytes memory) {
-        return _encode(data, additionalParam);
     }
 
     function _decode(
@@ -57,18 +39,11 @@ contract BaseEncoder is BaseAccessible {
         return decodedData;
     }
 
-    function decode(
-        bytes memory encodedData,
-        bytes32 additionalParam
-    ) external view onlyInitialized returns (bytes memory) {
-        return _decode(encodedData, additionalParam);
-    }
-
     function _validateEncodedData(
         bytes memory encodedData,
         bytes memory originalData,
         bytes32 additionalParam
-    ) internal view onlyInitialized returns (bool) {
+    ) internal view returns (bool) {
         bytes memory decodedData = _decode(encodedData, additionalParam);
 
         if (keccak256(decodedData) != keccak256(originalData)) {
@@ -79,13 +54,5 @@ contract BaseEncoder is BaseAccessible {
             abi.encodePacked(decodedData, additionalParam)
         );
         return validationHash == _salt;
-    }
-
-    function verifyEncodedData(
-        bytes memory encodedData,
-        bytes memory originalData,
-        bytes32 additionalParam
-    ) external view onlyInitialized returns (bool) {
-        return _validateEncodedData(encodedData, originalData, additionalParam);
     }
 }

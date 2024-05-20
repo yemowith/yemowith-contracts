@@ -4,9 +4,9 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Accessblity/BaseAccessControl.sol";
 
-contract WrappedToken is ERC20, BaseAccessible {
+contract WrappedToken is ERC20, BaseAccessControl {
     using SafeERC20 for IERC20;
 
     bytes32 public constant PROPOSAL_MANAGER_ROLE =
@@ -42,7 +42,7 @@ contract WrappedToken is ERC20, BaseAccessible {
         string memory symbol
     ) ERC20(name, symbol) {
         underlyingToken = IERC20(_underlyingToken);
-        _initialize(_owner);
+
         _setupRole(PROPOSAL_MANAGER_ROLE, _owner);
     }
 
@@ -50,7 +50,7 @@ contract WrappedToken is ERC20, BaseAccessible {
      * @dev Deposit underlying tokens and mint wrapped tokens
      * @param amount The amount of underlying tokens to deposit
      */
-    function deposit(uint256 amount) external onlyAvailable {
+    function deposit(uint256 amount) external {
         require(amount > 0, "Amount must be greater than 0");
         underlyingToken.safeTransferFrom(msg.sender, address(this), amount);
         _mint(msg.sender, amount);
@@ -61,7 +61,7 @@ contract WrappedToken is ERC20, BaseAccessible {
      * @dev Withdraw underlying tokens by burning wrapped tokens
      * @param amount The amount of wrapped tokens to withdraw
      */
-    function withdraw(uint256 amount) external onlyAvailable {
+    function withdraw(uint256 amount) external {
         require(amount > 0, "Amount must be greater than 0");
         require(balanceOf(msg.sender) >= amount, "Insufficient balance");
         _burn(msg.sender, amount);
@@ -85,20 +85,6 @@ contract WrappedToken is ERC20, BaseAccessible {
      */
     function underlyingBalanceOf(address user) external view returns (uint256) {
         return underlyingToken.balanceOf(user);
-    }
-
-    /**
-     * @dev Pause the contract
-     */
-    function pause() external onlyRole(PAUSER_ROLE) {
-        _pause();
-    }
-
-    /**
-     * @dev Unpause the contract
-     */
-    function unpause() external onlyRole(PAUSER_ROLE) {
-        _unpause();
     }
 
     /**

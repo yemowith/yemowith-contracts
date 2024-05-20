@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../Ownablity/Adminable.sol"; // Ensure the path is correct
-
-abstract contract Lockable is Adminable {
+abstract contract Lockable {
     bool private _isLocked;
     uint256 private _lockedUntilBlock;
 
@@ -18,18 +16,13 @@ abstract contract Lockable is Adminable {
         _;
     }
 
-    function _initialize(address owner) internal virtual override {
-        super._initialize(owner); // Initialize the base Adminable contract
-        _isLocked = false; // Initially, the contract is not locked
-    }
-
-    function _lock(uint256 numberOfBlocks) internal virtual onlySuperAdmin {
+    function _lock(uint256 numberOfBlocks) internal virtual {
         _isLocked = true;
         _lockedUntilBlock = block.number + numberOfBlocks;
         emit Locked(_lockedUntilBlock);
     }
 
-    function _unlock() internal virtual onlySuperAdmin {
+    function _unlock() internal virtual {
         _isLocked = false;
         emit Unlocked();
     }

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Core/Accessblity/BaseAccessControl.sol";
 
-contract AppliesConcepts is BaseAccessible {
+contract AppliesConcepts is BaseAccessControl {
     enum OperationType {
         MUL,
         PLUS,
@@ -59,7 +59,7 @@ contract AppliesConcepts is BaseAccessible {
     /**
      * @dev Initialize the contract with default concepts
      */
-    function _initialize() internal {
+    function initialize() internal {
         addConcept(
             keccak256("FIXEDCLAIM"),
             "FIXEDCLAIM",
