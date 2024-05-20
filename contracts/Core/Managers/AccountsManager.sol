@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "contracts/Core/Accessblity/BaseAccessible.sol";
 
 contract AccountsManager is BaseAccessible {
+    /*
     struct Account {
         uint256 id;
         address externalAddress;
@@ -143,4 +144,6 @@ contract AccountsManager is BaseAccessible {
         require(accountId < accounts.length, "Account does not exist");
         return _decode(encodedData, additionalParam);
     }
+
+    */
 }

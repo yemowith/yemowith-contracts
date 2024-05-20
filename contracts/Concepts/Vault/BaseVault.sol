@@ -4,9 +4,14 @@ pragma solidity ^0.8.0;
 import "./PairsManager.sol";
 import "contracts/Core/Accessblity/BaseAccessible.sol";
 import "contracts/Core/Security/CustomReentrancyGuard.sol";
+import "contracts/Interfaces/ERC20/IERC20.sol";
 
-contract InsuranceToken is ERC20 {
-    constructor(string memory name, string memory symbol) ERC20(name, symbol) {}
+/*
+contract InsuranceToken is IERC20 {
+    constructor(
+        string memory name,
+        string memory symbol
+    ) IERC20(name, symbol) {}
 
     function mint(address to, uint256 amount) external {
         _mint(to, amount);
@@ -16,8 +21,9 @@ contract InsuranceToken is ERC20 {
         _burn(from, amount);
     }
 }
-
+*/
 contract BaseVault is BaseAccessible, CustomReentrancyGuard {
+    /*
     PairsManager public pairsManager;
     mapping(uint256 => InsuranceToken) public insuranceBaseTokens;
     mapping(uint256 => InsuranceToken) public insuranceQuoteTokens;
@@ -61,7 +67,6 @@ contract BaseVault is BaseAccessible, CustomReentrancyGuard {
         );
         insuranceBaseTokens[pairId].mint(msg.sender, amount);
         _saveDeposit(msg.sender, pairId, amount);
-        emit Deposit(msg.sender, address(baseToken), amount, pairId);
     }
 
     function _depositQuoteToken(uint256 amount, uint256 pairId) internal {
@@ -72,7 +77,6 @@ contract BaseVault is BaseAccessible, CustomReentrancyGuard {
         );
         insuranceQuoteTokens[pairId].mint(msg.sender, amount);
         _saveDeposit(msg.sender, pairId, amount);
-        emit Deposit(msg.sender, address(quoteToken), amount, pairId);
     }
 
     function _withdrawBaseToken(uint256 amount, uint256 pairId) internal {
@@ -80,7 +84,6 @@ contract BaseVault is BaseAccessible, CustomReentrancyGuard {
         insuranceBaseTokens[pairId].burn(msg.sender, amount);
         require(baseToken.transfer(msg.sender, amount), "Transfer failed");
         _saveWithdrawal(msg.sender, pairId, amount);
-        emit Withdraw(msg.sender, address(baseToken), amount, pairId);
     }
 
     function _withdrawQuoteToken(uint256 amount, uint256 pairId) internal {
@@ -88,7 +91,6 @@ contract BaseVault is BaseAccessible, CustomReentrancyGuard {
         insuranceQuoteTokens[pairId].burn(msg.sender, amount);
         require(quoteToken.transfer(msg.sender, amount), "Transfer failed");
         _saveWithdrawal(msg.sender, pairId, amount);
-        emit Withdraw(msg.sender, address(quoteToken), amount, pairId);
     }
 
     function lock(uint256 numberOfBlocks) external onlyRole(LOCKER_ROLE) {
@@ -130,4 +132,6 @@ contract BaseVault is BaseAccessible, CustomReentrancyGuard {
     ) internal {
         withdrawals[user][pairId].push(WithdrawalInfo(amount, block.timestamp));
     }
+
+    */
 }

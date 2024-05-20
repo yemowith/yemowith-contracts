@@ -50,7 +50,7 @@ contract WrappedToken is ERC20, BaseAccessible {
      * @dev Deposit underlying tokens and mint wrapped tokens
      * @param amount The amount of underlying tokens to deposit
      */
-    function deposit(uint256 amount) external whenNotPaused {
+    function deposit(uint256 amount) external onlyAvailable {
         require(amount > 0, "Amount must be greater than 0");
         underlyingToken.safeTransferFrom(msg.sender, address(this), amount);
         _mint(msg.sender, amount);
@@ -61,7 +61,7 @@ contract WrappedToken is ERC20, BaseAccessible {
      * @dev Withdraw underlying tokens by burning wrapped tokens
      * @param amount The amount of wrapped tokens to withdraw
      */
-    function withdraw(uint256 amount) external whenNotPaused {
+    function withdraw(uint256 amount) external onlyAvailable {
         require(amount > 0, "Amount must be greater than 0");
         require(balanceOf(msg.sender) >= amount, "Insufficient balance");
         _burn(msg.sender, amount);

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "contracts/Interfaces/ERC20/IERC20.sol";
 
-contract PairsManager is Ownable {
+contract PairsManager is BaseAccessible {
     struct TokenPair {
         IERC20 baseToken;
         IERC20 quoteToken;

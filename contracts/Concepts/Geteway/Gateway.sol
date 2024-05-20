@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "./GatewaysManagement.sol";
 
 contract Gateway {
+    /*
     GatewayManagement public gatewayManagement;
 
     event TransactionReceived(address indexed from, uint256 amount, bytes data);
@@ -64,4 +65,6 @@ contract Gateway {
         emit TransactionExecuted(provider, node, data);
         // Implement the logic to execute the transaction
     }
+
+    */
 }

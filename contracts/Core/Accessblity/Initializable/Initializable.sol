@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../Ownablity/Ownable.sol"; // Adjust the path as necessary based on your project structure
+import "../Ownablity/OwnableContract.sol"; // Adjust the path as necessary based on your project structure
 
-abstract contract Initializable is Ownable {
+abstract contract Initializable is OwnableContract {
     bool private _initialized;
 
     modifier onlyInitialized() {

@@ -7,8 +7,6 @@ import "contracts/Core/Templates/Proxies/Proxy.sol";
 contract ContractManager is BaseAccessible {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant DEPLOYER_ROLE = keccak256("DEPLOYER_ROLE");
-    bytes32 public constant LOCKER_ROLE = keccak256("LOCKER_ROLE");
-    bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
     struct ContractCode {
         uint256 id;
@@ -45,10 +43,7 @@ contract ContractManager is BaseAccessible {
         // Constructor is now minimal
     }
 
-    function _initialize(
-        address owner,
-        bytes32 _salt
-    ) internal override(BaseAccessible) {
+    function _initialize(address owner, bytes32 _salt) internal {
         super._initialize(owner);
         salt = _salt;
         _setupRole(DEFAULT_ADMIN_ROLE, owner);
@@ -62,7 +57,7 @@ contract ContractManager is BaseAccessible {
         string memory contractType,
         bytes memory bytecode,
         string memory code
-    ) external onlyIn onlyRole(ADMIN_ROLE) {
+    ) external onlyInitialized onlyRole(ADMIN_ROLE) {
         bytes memory encodedBytecode = _encode(bytecode, salt);
         uint256 id = contractsCodes.length;
         contractsCodes.push(

@@ -26,7 +26,7 @@ abstract contract Adminable is Initializable {
         _;
     }
 
-    function _initialize(address owner) internal override {
+    function _initialize(address owner) internal virtual override {
         super._initialize(owner); // Call the base initialization
         _superAdmin = owner; // Set the owner as the initial super admin
     }

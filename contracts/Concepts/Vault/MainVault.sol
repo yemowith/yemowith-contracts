@@ -1,24 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "./PairsManager.sol";
-import "./BaseVault.sol";
-
-contract InsuranceToken is ERC20 {
-    constructor(string memory name, string memory symbol) ERC20(name, symbol) {}
-
-    function mint(address to, uint256 amount) external {
-        _mint(to, amount);
-    }
-
-    function burn(address from, uint256 amount) external {
-        _burn(from, amount);
-    }
-}
+import "contracts/Interfaces/ERC20/IERC20.sol";
+import "contracts/Core/Templates/Tokens/ERC20.sol";
+import { PairsManager } from "./PairsManager.sol";
+import { BaseVault } from "./BaseVault.sol";
 
 contract MainVault is BaseVault {
+    /*
     event Deposit(
         address indexed user,
         address indexed token,
@@ -63,4 +52,6 @@ contract MainVault is BaseVault {
             revert("Invalid token address");
         }
     }
+
+    */
 }

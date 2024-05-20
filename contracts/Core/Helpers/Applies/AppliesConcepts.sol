@@ -95,7 +95,10 @@ contract AppliesConcepts is BaseAccessible {
      * @param conceptId The ID of the concept
      * @param inputValue The input value to apply the concept to
      * @param overrideValue The value to override the concept's value
-     * @return The output value after applying the concept
+     * @return originalValue The original input value
+     * @return givenValue The given input value
+     * @return outputValue The output value after applying the concept
+     * @return difference The difference between the output value and the input value
      */
     function applyConcept(
         bytes32 conceptId,

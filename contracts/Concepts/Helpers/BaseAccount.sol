@@ -8,7 +8,7 @@ contract BaseAccount is BaseAccessible {
 
     address public _accountRegistry;
     address public _encoder;
-    address private _salt;
+    bytes32 private _salt;
 
     function _initializeSalt(address owner) internal {
         _salt = keccak256(abi.encodePacked(owner));
@@ -18,7 +18,7 @@ contract BaseAccount is BaseAccessible {
         address owner,
         address accountRegistry,
         address encoder
-    ) internal virtual ownerOnly(owner) {
+    ) internal virtual {
         _initialize(owner);
         _initializeSalt(owner);
         _accountRegistry = accountRegistry;

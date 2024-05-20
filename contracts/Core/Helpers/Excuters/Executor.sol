@@ -18,13 +18,20 @@ contract Executor is BaseAccessible {
         _setupRole(MULTI_EXECUTOR_ROLE, owner);
     }
 
+    function _execute(
+        address target,
+        bytes memory data
+    ) internal onlyAvailable onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+        (bool success, bytes memory result) = target.call(data);
+        require(success, "Execution failed");
+        return result;
+    }
+
     function execute(
         address target,
         bytes memory data
     ) external onlyAvailable onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
-        (bool success, bytes memory result) = target.call(data);
-        require(success, "Execution failed");
-        return result;
+        return _execute(target, data);
     }
 
     function multiExecute(
@@ -42,7 +49,7 @@ contract Executor is BaseAccessible {
         );
         bytes[] memory results = new bytes[](targets.length);
         for (uint256 i = 0; i < targets.length; i++) {
-            results[i] = execute(targets[i], data[i]);
+            results[i] = _execute(targets[i], data[i]);
         }
         return results;
     }
