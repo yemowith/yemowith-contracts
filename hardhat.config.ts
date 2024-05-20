@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "hardhat-interface-generator";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -15,6 +16,12 @@ const config: HardhatUserConfig = {
       },
     ],
   },
+  paths: {
+    // Bu yolu kendi projenize göre ayarlayabilirsiniz
+    sources: "./contracts",
+    artifacts: "./artifacts",
+  },
+
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {

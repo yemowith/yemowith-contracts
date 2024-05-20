@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": {
     "yemowith-contracts": "./bin/yemowith-contracts.js",
-    "types:generate": "npx typechain --target ethers-v6 --out-dir contracts/Interfaces 'out/**/*.json'"
+    "types:generate": "forge build --out ./build/out && npx typechain --target ethers-v6 --out-dir build/Interfaces 'build/out/**/*.json'"
   },
   "files": [
     "/contracts/**/*.sol",
@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "types:generate": "npx typechain --target ethers-v6 --out-dir contracts/Interfaces 'out/**/*.json'"
+    "types:generate": "forge build --out ./build/out &&  npx typechain --target ethers-v6 --out-dir build/Interfaces 'build/out/**/*.json'"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@typechain/ethers-v6": "^0.5.1",
     "hardhat": "^2.22.3",
+    "hardhat-interface-generator": "^0.0.6",
     "prettier-plugin-solidity": "^1.3.1",
     "typechain": "^8.3.2"
   },
