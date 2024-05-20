@@ -52,6 +52,14 @@ abstract contract BaseAccessible is Adminable, Statusable, AccessControl {
         AccessControl._setRoleAdmin(role, newAdminRole);
     }
 
+      function _setSuperAdmin(address newSuperAdmin) internal override Adminable.onlyInitialized() onlyRole(SUPER_ADMIN_ROLE)  {
+        Adminable._setSuperAdmin(newSuperAdmin);
+    }
+
+    function _setAdminStatus(address admin, bool status) internal override Adminable.onlyInitialized() onlyRole(SUPER_ADMIN_ROLE) {
+        Adminable._setAdminStatus(admin, status);
+    }
+
     // Override the _lock function to include role checks
     function _lock(
         uint256 numberOfBlocks

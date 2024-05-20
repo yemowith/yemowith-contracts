@@ -9,7 +9,7 @@
   },
   "files": [
     "/contracts/**/*.sol",
-    "/build/contracts/*.json",
+    "/build/**/*.json",
     "!/mocks/**/*"
   ],
   "scripts": {
