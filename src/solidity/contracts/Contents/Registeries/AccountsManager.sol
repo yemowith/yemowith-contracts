@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
+import "@yemowith/Core/Objective/Accessblity/BaseAccessControl.sol";
 
 contract AccountsManager is BaseAccessControl {
     /*

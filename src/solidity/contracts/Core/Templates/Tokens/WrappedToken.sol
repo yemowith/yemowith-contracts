@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
+import "src/solidity/contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
 
 contract WrappedToken is ERC20, BaseAccessControl {
     using SafeERC20 for IERC20;

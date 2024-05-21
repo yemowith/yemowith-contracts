@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Providing/Storagable/Storagable.sol";
-import "contracts/Core/Providing/Storagable/Collectable/Collectable.sol";
-import "contracts/Core/Providing/Storagable/Indexable/Indexable.sol";
+import "src/solidity/contracts/Core/Providing/Storagable/Storagable.sol";
+import "src/solidity/contracts/Core/Providing/Storagable/Collectable/Collectable.sol";
+import "src/solidity/contracts/Core/Providing/Storagable/Indexable/Indexable.sol";
 
 contract BaseProvider is Storagable, Collectable, Indexable {
     // Event for indicating successful initialization of BaseProvider

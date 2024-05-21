@@ -3,5 +3,6 @@
     "namespace": "Yemowith.Contracts",
     "lang": 0,
     "autoCodeGen": true,
-    "projectPath": "../"
+    "projectPath": "./src/solidity/contracts"
 }
+

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Helpers/Executors/Executor.sol";
+import "src/solidity/contracts/Core/Helpers/Executors/Executor.sol";
 
 abstract contract WithExecutor is Executor {
     function execute(

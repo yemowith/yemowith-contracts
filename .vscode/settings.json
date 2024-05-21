@@ -1,7 +1,25 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[solidity]": {
-    "editor.defaultFormatter": "JuanBlanco.solidity"
+    "editor.defaultFormatter": "JuanBlanco.solidity",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "editor.snippetSuggestions": "top"
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "solidity.remappings": [
+    "@openzeppelin/=node_modules/@openzeppelin/",
+    "@yemowith/=src/solidity/contracts/",
+    "factories/=src/solidity/factories/"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "solidity.defaultCompiler": "localFile"
 }

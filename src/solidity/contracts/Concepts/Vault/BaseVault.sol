@@ -2,8 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "./PairsManager.sol";
-import "contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
-import "contracts/Core/Security/CustomReentrancyGuard.sol";
+import "src/solidity/contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
+import "src/solidity/contracts/Core/Security/CustomReentrancyGuard.sol";
 
 /*
 contract InsuranceToken is IERC20 {

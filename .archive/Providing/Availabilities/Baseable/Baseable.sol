@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
-import "contracts/Core/Accessblity/Statusability/Statusable.sol";
+import "src/solidity/contracts/Core/Accessblity/BaseAccessible.sol";
+import "src/solidity/contracts/Core/Accessblity/Statusability/Statusable.sol";
 
 contract Baseable is BaseAccessible, Statusable {
     bytes32 private _mainRole;

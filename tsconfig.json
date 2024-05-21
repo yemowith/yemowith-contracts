@@ -9,9 +9,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noImplicitAny": false,
-    "paths": {
-      "@/*": ["./contracts/*"]
-    },
+    "paths": {},
     "outDir": "build/ts",
     "rootDir": "src"
   },

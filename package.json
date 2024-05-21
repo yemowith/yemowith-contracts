@@ -4,11 +4,11 @@
   "description": "yemowith contract, include all tools you need to build a dapps or wallets project ",
   "main": "index.js",
   "bin": {
-    "yemowith-contracts": "./bin/yemowith-contracts.js",
+    "yemowith:build": "npm run build",
     "types:generate": "forge build --out ./build/out && npx typechain --target ethers-v6 --out-dir build/Interfaces 'build/out/**/*.json'"
   },
   "files": [
-    "/contracts/**/*.sol",
+    "src/solidity/contracts/**/*.sol",
     "/build/**/*.json",
     "!/mocks/**/*",
     "dist/**/*"

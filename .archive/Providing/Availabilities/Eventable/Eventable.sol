@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Accessblity/BaseAccessible.sol";
+import "src/solidity/contracts/Core/Accessblity/BaseAccessible.sol";
 
 contract Eventable is BaseAccessible {
     bytes32 public constant EVENT_MANAGER_ROLE =

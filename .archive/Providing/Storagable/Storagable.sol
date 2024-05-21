@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../../Accessblity/BaseAccessible.sol";
-import "contracts/Core/Providing/Storagable/Registerable/Registerable.sol";
+import "src/solidity/contracts/Core/Providing/Storagable/Registerable/Registerable.sol";
 
 contract Storagable is BaseAccessible, Registerable {
     // Event for indicating successful initialization of Storagable

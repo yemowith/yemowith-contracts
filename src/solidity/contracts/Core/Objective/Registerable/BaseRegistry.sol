@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
+import "src/solidity/contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
 
 contract BaseRegistry is BaseAccessControl {
     struct RegistryItem {
