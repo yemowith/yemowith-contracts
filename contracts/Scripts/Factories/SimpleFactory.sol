@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 contract SimpleFactory {
-    struct ContractForFactory {}
+    //  struct ContractForFactory {}
     address[] public contracts;
 
     function createContract(address _contract) public {

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./PairsManager.sol";
-import "contracts/Core/Objecting/Accessblity/BaseAccessControl.sol";
+import "contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
 import "contracts/Core/Security/CustomReentrancyGuard.sol";
 
 /*

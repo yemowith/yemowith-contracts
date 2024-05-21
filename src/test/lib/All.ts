@@ -5,17 +5,5 @@ import {
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import hre from "hardhat";
-import { deploy } from "../../../.archive/utils/tools";
 
-describe("All", function () {
-  describe("Deployment", async () => {
-    const encoder = await deploy("BaseEncoder", []);
-    it("Should set the right unlockTime", async () => {
-      (await encoder).deployed();
-    });
-
-    it("Should set the right unlockTime", async () => {
-      (await encoder).deployed();
-    });
-  });
-});
+describe("All", function () {});

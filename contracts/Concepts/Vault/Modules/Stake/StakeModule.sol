@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Objecting/Accessblity/BaseAccessControl.sol";
+import "contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract StakeModule is BaseAccessControl {

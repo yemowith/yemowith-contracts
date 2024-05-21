@@ -12,8 +12,8 @@
     "paths": {
       "@/*": ["./contracts/*"]
     },
-
-    "outDir": "build/ts"
+    "outDir": "build/ts",
+    "rootDir": "src"
   },
   "include": [
     "src/scripts",
@@ -23,6 +23,5 @@
     "src/global.d.ts",
     ".archive/utils"
   ],
-  "exclude": ["node_modules", "dist", "src/test/Dev", ".archive", "build"],
-  "files": ["./hardhat.config.ts", "src/global.d.ts"]
+  "exclude": ["node_modules", "dist", "src/test/Dev", ".archive", "build"]
 }

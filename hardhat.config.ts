@@ -1,9 +1,10 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-interface-generator";
-import '@typechain/hardhat'
-import '@nomicfoundation/hardhat-ethers'
-import '@nomicfoundation/hardhat-chai-matchers'
+import "@typechain/hardhat";
+import "@nomicfoundation/hardhat-ethers";
+import "@nomicfoundation/hardhat-chai-matchers";
+import "@nomiclabs/hardhat-truffle5";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -31,9 +32,14 @@ const config: HardhatUserConfig = {
   paths: {
     // Bu yolu kendi projenize göre ayarlayabilirsiniz
     sources: "./contracts",
-    artifacts: "./artifacts",
+    artifacts: "./build/artifacts",
+    cache: "./build/cache",
+    tests: "./src/test",
   },
-
+  typechain: {
+    outDir: "./build/typechain",
+    target: "ethers-v6",
+  },
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {

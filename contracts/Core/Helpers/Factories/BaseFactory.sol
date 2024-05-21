@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Binders/WithEncoder.sol";
-import "contracts/Core/Binders/WithDeployer.sol";
-import "contracts/Core/Binders/WithExcuter.sol";
+import "contracts/Core/Objective/Binders/WithEncoder.sol";
+import "contracts/Core/Objective/Binders/WithDeployer.sol";
+import "contracts/Core/Objective/Binders/WithExecutor.sol";
 
-contract BaseFactory is WithEncoder, WithDeployer, WithExcuter {}
+contract BaseFactory is WithEncoder, WithDeployer, WithExecutor {}

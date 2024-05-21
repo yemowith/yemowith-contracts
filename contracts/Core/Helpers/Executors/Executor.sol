@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/Core/Objecting/Accessblity/BaseAccessControl.sol";
+import "contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
 
 contract Executor is BaseAccessControl {
     bytes32 public constant EXECUTOR_ROLE = keccak256("EXECUTOR_ROLE");
@@ -22,14 +22,14 @@ contract Executor is BaseAccessControl {
     function execute(
         address target,
         bytes memory data
-    ) external onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+    ) external virtual onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
         return _execute(target, data);
     }
 
     function multiExecute(
         address[] memory targets,
         bytes[] memory data
-    ) external onlyRole(MULTI_EXECUTOR_ROLE) returns (bytes[] memory) {
+    ) external virtual onlyRole(MULTI_EXECUTOR_ROLE) returns (bytes[] memory) {
         require(
             targets.length == data.length,
             "Targets and data length mismatch"
@@ -44,7 +44,7 @@ contract Executor is BaseAccessControl {
     function call(
         address target,
         bytes memory data
-    ) external onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+    ) external virtual onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
         (bool success, bytes memory result) = target.call(data);
         require(success, "Call failed");
         return result;
@@ -53,7 +53,13 @@ contract Executor is BaseAccessControl {
     function callStatic(
         address target,
         bytes memory data
-    ) external view onlyRole(STATIC_CALLER_ROLE) returns (bytes memory) {
+    )
+        external
+        view
+        virtual
+        onlyRole(STATIC_CALLER_ROLE)
+        returns (bytes memory)
+    {
         (bool success, bytes memory result) = target.staticcall(data);
         require(success, "Static call failed");
         return result;
@@ -62,7 +68,7 @@ contract Executor is BaseAccessControl {
     function getEncodedData(
         string memory signature,
         bytes memory params
-    ) external pure returns (bytes memory) {
+    ) external pure virtual returns (bytes memory) {
         return abi.encodeWithSignature(signature, params);
     }
 
@@ -70,7 +76,7 @@ contract Executor is BaseAccessControl {
         address target,
         string memory signature,
         bytes memory params
-    ) external pure returns (address, bytes memory) {
+    ) external pure virtual returns (address, bytes memory) {
         return (target, abi.encodeWithSignature(signature, params));
     }
 }
