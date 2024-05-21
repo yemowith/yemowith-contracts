@@ -31,7 +31,7 @@ const config: HardhatUserConfig = {
   },
   paths: {
     // Bu yolu kendi projenize göre ayarlayabilirsiniz
-    sources: "./contracts",
+    sources: "./src/solidity/contracts",
     artifacts: "./build/artifacts",
     cache: "./build/cache",
     tests: "./src/test",

@@ -1,6 +1,6 @@
 {
   "name": "yemowith-contracts",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "yemowith contract, include all tools you need to build a dapps or wallets project ",
   "main": "index.js",
   "bin": {

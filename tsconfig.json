@@ -16,12 +16,10 @@
     "rootDir": "src"
   },
   "include": [
-    "src/scripts",
-    "src/test",
-    "./typechain-types",
-    "src/utils/_base.ts",
-    "src/global.d.ts",
-    ".archive/utils"
+    "src/js/**/*",
+    "build/typechain",
+    "src/js/utils/_base.ts",
+    "src/js/global.d.ts"
   ],
-  "exclude": ["node_modules", "dist", "src/test/Dev", ".archive", "build"]
+  "exclude": ["node_modules", "dist", "src/js/test/Dev", ".archive", "build"]
 }
