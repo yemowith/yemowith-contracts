@@ -23,6 +23,8 @@
     "lint:fix": "prettier --write 'contracts/**/*.sol' 'test/**/*.ts'",
     "clean": "rm -rf build && rm -rf cache",
     "format": "prettier --write 'contracts/**/*.sol' 'test/**/*.ts'",
+    "ts:build": "tsc",
+    "build": "tsc && types:generate",
     "types:generate": "forge build --out ./build/out &&  npx typechain --target ethers-v6 --out-dir build/Interfaces 'build/out/**/*.json'"
   },
   "repository": {

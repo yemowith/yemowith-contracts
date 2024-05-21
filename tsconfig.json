@@ -13,14 +13,16 @@
       "@/*": ["./contracts/*"]
     },
 
-    "outDir": "dist"
+    "outDir": "build/ts"
   },
   "include": [
-    "./scripts",
-    "./test",
+    "src/scripts",
+    "src/test",
     "./typechain-types",
-    "./utils",
-    "./utils/_base.ts"
+    "src/utils/_base.ts",
+    "src/global.d.ts",
+    ".archive/utils"
   ],
-  "files": ["./hardhat.config.ts", "global.d.ts", "./**/*.d.ts"]
+  "exclude": ["node_modules", "dist", "src/test/Dev", ".archive", "build"],
+  "files": ["./hardhat.config.ts", "src/global.d.ts"]
 }
