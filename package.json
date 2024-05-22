@@ -2,29 +2,33 @@
   "name": "yemowith-contracts",
   "version": "2.0.0",
   "description": "yemowith contract, include all tools you need to build a dapps or wallets project ",
-  "main": "index.js",
   "bin": {
     "yemowith:build": "npm run build",
     "types:generate": "forge build --out ./build/out && npx typechain --target ethers-v6 --out-dir build/Interfaces 'build/out/**/*.json'"
   },
+  "main": "index.js",
   "files": [
     "src/solidity/contracts/**/*.sol",
     "/build/**/*.json",
     "!/mocks/**/*",
     "dist/**/*"
   ],
-  "types": "dist/index.d.ts",
+  "types": "src/js/global.d.ts",
   "scripts": {
+    "sdk:watch": "nodemon ./src/js/sdk/app.ts",
+    "sdk:web": "npx kill-port 7777 && nodemon ./src/js/sdk/web/http-server.ts",
+    "sdk:build": "tsc -p ./src/js/sdk/tsconfig.json",
+    "sdk:run": "npx kill-port 7777 && nodemon ./src/js/scripts/run_script.ts",
+    "hardhat:run": "npx hardhat run ./src/js/scripts/run_script.ts --network hardhat",
     "test": "hardhat test",
     "compile": "hardhat compile",
-    "deploy": "hardhat run scripts/deploy.js",
     "coverage": "hardhat coverage",
     "lint": "prettier --check 'contracts/**/*.sol' 'test/**/*.ts'",
     "lint:fix": "prettier --write 'contracts/**/*.sol' 'test/**/*.ts'",
     "clean": "rm -rf build && rm -rf cache",
     "format": "prettier --write 'contracts/**/*.sol' 'test/**/*.ts'",
     "ts:build": "tsc",
-    "build": "npx hardhat compile && npm run ts:build",
+    "build": "npx hardhat compile",
     "types:generate": "forge build --out ./build/out &&  npx typechain --target ethers-v6 --out-dir build/Interfaces 'build/out/**/*.json'"
   },
   "repository": {
@@ -54,8 +58,10 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.12",
     "consola": "^3.2.3",
+    "dotenv": "^16.4.5",
     "hardhat": "^2.22.3",
     "hardhat-interface-generator": "^0.0.6",
+    "nodemon": "^3.1.0",
     "prettier-plugin-solidity": "^1.3.1",
     "truffle": "^5.11.5",
     "ts-node": "^10.9.2",
@@ -64,6 +70,8 @@
     "web3": "^1.10.4"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.2"
+    "@openzeppelin/contracts": "^5.0.2",
+    "express": "^4.19.2",
+    "viem": "^2.11.1"
   }
 }

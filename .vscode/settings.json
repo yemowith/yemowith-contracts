@@ -15,11 +15,6 @@
     "editor.tabCompletion": "on",
     "editor.snippetSuggestions": "top"
   },
-  "solidity.remappings": [
-    "@openzeppelin/=node_modules/@openzeppelin/",
-    "@yemowith/=src/solidity/contracts/",
-    "factories/=src/solidity/factories/"
-  ],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "solidity.defaultCompiler": "localFile"
+  "solidity.remappings": [],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
