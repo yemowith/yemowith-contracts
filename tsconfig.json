@@ -19,6 +19,7 @@
   "exclude": [
     "node_modules", // Exclude node_modules directory
     "dist", // Exclude dist directory
-    "src/**/*.test.ts" // Exclude all test files in the src directory
+    "src/**/*.test.ts", // Exclude all test files in the src directory
+    ".v1"
   ]
 }
