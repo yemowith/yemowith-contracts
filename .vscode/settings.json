@@ -1,4 +1,6 @@
 {
+  "extensions.ignoreRecommendations": true,
+  "extensions.disabled": ["juanblanco.solidity"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[solidity]": {
     "editor.defaultFormatter": "JuanBlanco.solidity",
@@ -16,5 +18,8 @@
     "editor.snippetSuggestions": "top"
   },
   "solidity.remappings": [],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.exclude": {
+    "./.v1": true
+  }
 }
