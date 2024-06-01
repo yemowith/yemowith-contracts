@@ -1,4 +1,4 @@
-import _spc from "../utils/_base";
+import _spc from "./utils/_base";
 
 type SPCType = typeof _spc;
 

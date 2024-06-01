@@ -58,8 +58,8 @@ module.exports = {
     },
   },
 
-  contracts_build_directory: "./build/contracts",
-  migrations_directory: "./migrations",
-  test_directory: "./test",
-  contracts_directory: "./contracts",
+  contracts_build_directory: "./build/solc",
+  migrations_directory: "./src/solc/migrations",
+  test_directory: "./src/solc/test",
+  contracts_directory: "./src/solc/contracts",
 };
