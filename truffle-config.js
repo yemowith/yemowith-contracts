@@ -1,15 +1,15 @@
-// require('dotenv').config();
-// const { MNEMONIC, PROJECT_ID } = process.env;
+require("dotenv").config();
+const { MNEMONIC, PROJECT_ID } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 module.exports = {
   networks: {
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 8545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
+    },
     // private: {
     //   provider: () => new HDWalletProvider(MNEMONIC, `https://network.io`),
     //   network_id: 2111,   // This network is yours, in the cloud.
@@ -57,9 +57,8 @@ module.exports = {
       // }
     },
   },
-
   contracts_build_directory: "./build/solc",
-  migrations_directory: "./src/solc/migrations",
-  test_directory: "./src/solc/test",
-  contracts_directory: "./src/solc/contracts",
+  migrations_directory: "src/solc/migrations",
+  test_directory: "src/solc/test",
+  contracts_directory: "src/solc/contracts",
 };

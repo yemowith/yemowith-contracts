@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "src/solidity/contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
-import "src/solidity/contracts/Core/Templates/Proxies/Proxy.sol";
+import "src/solc/contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
+import "src/solc/contracts/Core/Templates/Proxies/Proxy.sol";
 
 contract ContractManager is BaseAccessControl {
     bytes32 public constant DEPLOYER_ROLE = keccak256("DEPLOYER_ROLE");

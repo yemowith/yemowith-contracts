@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "src/solidity/contracts/Core/Helpers/Deployer/BaseDeployer.sol";
+import "src/solc/contracts/Core/Helpers/Deployer/BaseDeployer.sol";
 
 abstract contract WithDeployer is BaseDeployer {
     function deployContract(

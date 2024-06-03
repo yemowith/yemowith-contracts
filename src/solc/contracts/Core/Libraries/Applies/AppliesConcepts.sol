@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "src/solidity/contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
+import "src/solc/contracts/Core/Objective/Accessblity/BaseAccessControl.sol";
 
 contract AppliesConcepts is BaseAccessControl {
     enum OperationType {

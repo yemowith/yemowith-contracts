@@ -5,3 +5,5 @@ type SPCType = typeof _spc;
 declare global {
   var _spc: SPCType;
 }
+
+import "hardhat/types/runtime";

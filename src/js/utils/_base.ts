@@ -11,14 +11,14 @@ export const ethers = {
 };
 
 const getSigners = async () => {
-  const [owner, superAdmin] = await ethers.getSigners();
-  return { owner, superAdmin };
+  // const [owner, superAdmin] = await ethers.getSigners();
+  //  return { owner, superAdmin };
 };
 
 const _spc = await (async () => {
   const signers = await getSigners();
   return {
-    ...signers,
+    // ...signers,
     deploy: async () => {},
   };
 })();

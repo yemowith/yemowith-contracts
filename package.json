@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "yemowith contract, include all tools you need to build a dapps or wallets project ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,14 +18,19 @@
   "homepage": "https://github.com/yemowith/yemowith-contracts#readme",
   "keywords": [],
   "devDependencies": {
+    "@types/chai": "^4.3.16",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.12",
+    "chai": "^5.1.1",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "@truffle/hdwallet-provider": "^2.1.15",
     "dotenv": "^16.4.5",
     "ethers": "^6.12.1",
+    "truffle": "^5.11.5",
     "winston": "^3.13.0"
   }
 }
