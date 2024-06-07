@@ -1,20 +1,35 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../../libraries/Executors/Executor.sol";
+import "../../objective/Accessblity/BaseAccessControl.sol";
 
-abstract contract WithExecutor is Executor {
+contract Executor is BaseAccessControl {
+    bytes32 public constant EXECUTOR_ROLE = keccak256("EXECUTOR_ROLE");
+    bytes32 public constant STATIC_CALLER_ROLE =
+        keccak256("STATIC_CALLER_ROLE");
+    bytes32 public constant MULTI_EXECUTOR_ROLE =
+        keccak256("MULTI_EXECUTOR_ROLE");
+
+    function _execute(
+        address target,
+        bytes memory data
+    ) internal onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+        (bool success, bytes memory result) = target.call(data);
+        require(success, "Execution failed");
+        return result;
+    }
+
     function execute(
         address target,
         bytes memory data
-    ) external override onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+    ) external virtual onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
         return _execute(target, data);
     }
 
     function multiExecute(
         address[] memory targets,
         bytes[] memory data
-    ) external override onlyRole(MULTI_EXECUTOR_ROLE) returns (bytes[] memory) {
+    ) external virtual onlyRole(MULTI_EXECUTOR_ROLE) returns (bytes[] memory) {
         require(
             targets.length == data.length,
             "Targets and data length mismatch"
@@ -29,7 +44,7 @@ abstract contract WithExecutor is Executor {
     function call(
         address target,
         bytes memory data
-    ) external override onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
+    ) external virtual onlyRole(EXECUTOR_ROLE) returns (bytes memory) {
         (bool success, bytes memory result) = target.call(data);
         require(success, "Call failed");
         return result;
@@ -41,7 +56,7 @@ abstract contract WithExecutor is Executor {
     )
         external
         view
-        override
+        virtual
         onlyRole(STATIC_CALLER_ROLE)
         returns (bytes memory)
     {
@@ -53,7 +68,7 @@ abstract contract WithExecutor is Executor {
     function getEncodedData(
         string memory signature,
         bytes memory params
-    ) external pure override returns (bytes memory) {
+    ) external pure virtual returns (bytes memory) {
         return abi.encodeWithSignature(signature, params);
     }
 
@@ -61,7 +76,7 @@ abstract contract WithExecutor is Executor {
         address target,
         string memory signature,
         bytes memory params
-    ) external pure override returns (address, bytes memory) {
+    ) external pure virtual returns (address, bytes memory) {
         return (target, abi.encodeWithSignature(signature, params));
     }
 }

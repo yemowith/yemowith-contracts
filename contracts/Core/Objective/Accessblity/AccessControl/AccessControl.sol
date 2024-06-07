@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "../Ownablity/OwnableContract.sol";
 
-contract AccessControl is OwnableContract {
+abstract contract AccessControl is OwnableContract {
     using EnumerableSet for EnumerableSet.AddressSet;
 
     struct RoleData {
@@ -44,10 +44,11 @@ contract AccessControl is OwnableContract {
 
     constructor(
         address owner,
+        address admin,
         address superAdmin
     ) OwnableContract(owner, superAdmin) {
-        _setupRole(DEFAULT_ADMIN_ROLE, owner);
         _setupRole(OWNER_ROLE, owner);
+        _setupRole(DEFAULT_ADMIN_ROLE, admin);
         _setupRole(SUPER_ADMIN_ROLE, superAdmin);
     }
 

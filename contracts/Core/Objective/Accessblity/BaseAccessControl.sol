@@ -15,7 +15,7 @@ abstract contract BaseAccessControl is
     bytes32 public constant WHITELIST_ROLE = keccak256("WHITELIST_ROLE");
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
-    constructor() AccessControl(msg.sender, msg.sender) {}
+    constructor() AccessControl(msg.sender, msg.sender, msg.sender) {}
 
     modifier onlyWhitelisted() {
         require(
@@ -25,11 +25,14 @@ abstract contract BaseAccessControl is
         _;
     }
 
-    function initialize(address owner, address superAdmin) public initializer {
+    function initialize(
+        address owner,
+        address superAdmin,
+        address admin
+    ) public initializer {
         require(!isInitialized(), "AdvancedAccessControl: already initialized");
-        // Set up roles and owner
-        _setupRole(DEFAULT_ADMIN_ROLE, owner);
         _setupRole(_getOwnerRole(), owner);
+        _setupRole(DEFAULT_ADMIN_ROLE, admin);
         _setupRole(_getSuperAdminRole(), superAdmin);
         _initialize();
     }
