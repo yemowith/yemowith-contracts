@@ -29,7 +29,7 @@ abstract contract BaseAccessControl is
         address owner,
         address superAdmin,
         address admin
-    ) public initializer {
+    ) public virtual initializer {
         require(!isInitialized(), "AdvancedAccessControl: already initialized");
         _setupRole(_getOwnerRole(), owner);
         _setupRole(DEFAULT_ADMIN_ROLE, admin);

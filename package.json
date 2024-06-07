@@ -3,8 +3,10 @@
   "version": "3.0.0",
   "description": "yemowith contract, include all tools you need to build a dapps or wallets project ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc"
+    "generate-types": "typechain --target=truffle-v5 'build/contracts/*.json'",
+    "typecheck": "truffle compile --reset && yarn generate-types && tsc -p ./tsconfig.migrate.json --outDir ./migrations && tsc -p ./tsconfig.test.json --outDir ./test",
+    "test": "tsc -p ./tsconfig.test.json --outDir ./test && truffle test ./test/*.js",
+    "clean": "rm -rf build migrations test types"
   },
   "repository": {
     "type": "git",
@@ -17,20 +19,19 @@
   },
   "homepage": "https://github.com/yemowith/yemowith-contracts#readme",
   "keywords": [],
-  "devDependencies": {
-    "@types/chai": "^4.3.16",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.12.12",
-    "chai": "^5.1.1",
-    "nodemon": "^3.1.0",
-    "typescript": "^5.4.5"
-  },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.2",
-    "@truffle/hdwallet-provider": "^2.1.15",
-    "dotenv": "^16.4.5",
-    "ethers": "^6.12.1",
-    "truffle": "^5.11.5",
-    "winston": "^3.13.0"
+    "@openzeppelin/contracts": "^4.8.1",
+    "@typechain/truffle-v5": "^8.0.2",
+    "@types/bn.js": "^4.11.6",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/web3": "^1.2.2",
+    "truffle": "^5.1.22",
+    "typechain": "^8.1.1",
+    "typescript": "^4.6",
+    "web3": "^1",
+    "web3-core": "^1",
+    "web3-eth-contract": "^1",
+    "web3-utils": "^1"
   }
 }
