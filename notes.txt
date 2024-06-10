@@ -1,0 +1,3 @@
+Notes for development:
+
+1.
