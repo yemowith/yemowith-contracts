@@ -1,6 +1,6 @@
 {
   "name": "yemowith-contracts",
-  "version": "3.0.0",
+  "version": "4.0.1",
   "description": "yemowith contract, include all tools you need to build a dapps or wallets project ",
   "scripts": {
     "generate-types": "truffle compile --reset &&  typechain --target=truffle-v5 'build/contracts/*.json'",
