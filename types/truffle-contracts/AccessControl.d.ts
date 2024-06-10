@@ -7,11 +7,7 @@ import { EventData, PastEventOptions } from "web3-eth-contract";
 
 export interface AccessControlContract
   extends Truffle.Contract<AccessControlInstance> {
-  "new"(
-    owner: string,
-    superAdmin: string,
-    meta?: Truffle.TransactionDetails
-  ): Promise<AccessControlInstance>;
+  "new"(meta?: Truffle.TransactionDetails): Promise<AccessControlInstance>;
 }
 
 export interface AdminAdded {

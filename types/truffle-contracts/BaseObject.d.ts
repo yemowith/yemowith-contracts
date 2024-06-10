@@ -5,9 +5,9 @@
 import BN from "bn.js";
 import { EventData, PastEventOptions } from "web3-eth-contract";
 
-export interface BaseFactoryContract
-  extends Truffle.Contract<BaseFactoryInstance> {
-  "new"(meta?: Truffle.TransactionDetails): Promise<BaseFactoryInstance>;
+export interface BaseObjectContract
+  extends Truffle.Contract<BaseObjectInstance> {
+  "new"(meta?: Truffle.TransactionDetails): Promise<BaseObjectInstance>;
 }
 
 export interface AdminAdded {
@@ -118,7 +118,7 @@ type AllEvents =
   | Unlocked
   | Unpaused;
 
-export interface BaseFactoryInstance extends Truffle.ContractInstance {
+export interface BaseObjectInstance extends Truffle.ContractInstance {
   ADMIN_ROLE(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
   DEFAULT_ADMIN_ROLE(txDetails?: Truffle.TransactionDetails): Promise<string>;
@@ -301,33 +301,6 @@ export interface BaseFactoryInstance extends Truffle.ContractInstance {
     txDetails?: Truffle.TransactionDetails
   ): Promise<boolean>;
 
-  initialize: {
-    (
-      owner: string,
-      superAdmin: string,
-      admin: string,
-      txDetails?: Truffle.TransactionDetails
-    ): Promise<Truffle.TransactionResponse<AllEvents>>;
-    call(
-      owner: string,
-      superAdmin: string,
-      admin: string,
-      txDetails?: Truffle.TransactionDetails
-    ): Promise<void>;
-    sendTransaction(
-      owner: string,
-      superAdmin: string,
-      admin: string,
-      txDetails?: Truffle.TransactionDetails
-    ): Promise<string>;
-    estimateGas(
-      owner: string,
-      superAdmin: string,
-      admin: string,
-      txDetails?: Truffle.TransactionDetails
-    ): Promise<number>;
-  };
-
   /**
    * Public function to initiate the deployment of a contract.
    * @param _bytecode The bytecode of the contract to be deployed.
@@ -481,6 +454,33 @@ export interface BaseFactoryInstance extends Truffle.ContractInstance {
     additionalParam: string,
     txDetails?: Truffle.TransactionDetails
   ): Promise<boolean>;
+
+  initialize: {
+    (
+      owner: string,
+      superAdmin: string,
+      admin: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<Truffle.TransactionResponse<AllEvents>>;
+    call(
+      owner: string,
+      superAdmin: string,
+      admin: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<void>;
+    sendTransaction(
+      owner: string,
+      superAdmin: string,
+      admin: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<string>;
+    estimateGas(
+      owner: string,
+      superAdmin: string,
+      admin: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<number>;
+  };
 
   methods: {
     ADMIN_ROLE(txDetails?: Truffle.TransactionDetails): Promise<string>;
@@ -667,33 +667,6 @@ export interface BaseFactoryInstance extends Truffle.ContractInstance {
       txDetails?: Truffle.TransactionDetails
     ): Promise<boolean>;
 
-    initialize: {
-      (
-        owner: string,
-        superAdmin: string,
-        admin: string,
-        txDetails?: Truffle.TransactionDetails
-      ): Promise<Truffle.TransactionResponse<AllEvents>>;
-      call(
-        owner: string,
-        superAdmin: string,
-        admin: string,
-        txDetails?: Truffle.TransactionDetails
-      ): Promise<void>;
-      sendTransaction(
-        owner: string,
-        superAdmin: string,
-        admin: string,
-        txDetails?: Truffle.TransactionDetails
-      ): Promise<string>;
-      estimateGas(
-        owner: string,
-        superAdmin: string,
-        admin: string,
-        txDetails?: Truffle.TransactionDetails
-      ): Promise<number>;
-    };
-
     /**
      * Public function to initiate the deployment of a contract.
      * @param _bytecode The bytecode of the contract to be deployed.
@@ -847,6 +820,33 @@ export interface BaseFactoryInstance extends Truffle.ContractInstance {
       additionalParam: string,
       txDetails?: Truffle.TransactionDetails
     ): Promise<boolean>;
+
+    initialize: {
+      (
+        owner: string,
+        superAdmin: string,
+        admin: string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<Truffle.TransactionResponse<AllEvents>>;
+      call(
+        owner: string,
+        superAdmin: string,
+        admin: string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<void>;
+      sendTransaction(
+        owner: string,
+        superAdmin: string,
+        admin: string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<string>;
+      estimateGas(
+        owner: string,
+        superAdmin: string,
+        admin: string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<number>;
+    };
 
     "getEncodedData(address,string,bytes)"(
       target: string,

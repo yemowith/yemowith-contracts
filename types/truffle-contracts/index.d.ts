@@ -6,6 +6,7 @@ import { AccessControlContract } from "./AccessControl";
 import { BaseAccessControlContract } from "./BaseAccessControl";
 import { BaseDeployerContract } from "./BaseDeployer";
 import { BaseFactoryContract } from "./BaseFactory";
+import { BaseObjectContract } from "./BaseObject";
 import { BaseRegistryContract } from "./BaseRegistry";
 import { ExecutorContract } from "./Executor";
 import { LockableContract } from "./Lockable";
@@ -14,6 +15,7 @@ import { MultiSendCallOnlyContract } from "./MultiSendCallOnly";
 import { OwnableContractContract } from "./OwnableContract";
 import { PausableContract } from "./Pausable";
 import { RegisterableContract } from "./Registerable";
+import { SimpleStorageContract } from "./SimpleStorage";
 import { StatusableContract } from "./Statusable";
 import { WithDeployerContract } from "./WithDeployer";
 import { WithEncoderContract } from "./WithEncoder";
@@ -26,6 +28,7 @@ declare global {
       require(name: "BaseAccessControl"): BaseAccessControlContract;
       require(name: "BaseDeployer"): BaseDeployerContract;
       require(name: "BaseFactory"): BaseFactoryContract;
+      require(name: "BaseObject"): BaseObjectContract;
       require(name: "BaseRegistry"): BaseRegistryContract;
       require(name: "Executor"): ExecutorContract;
       require(name: "Lockable"): LockableContract;
@@ -34,6 +37,7 @@ declare global {
       require(name: "OwnableContract"): OwnableContractContract;
       require(name: "Pausable"): PausableContract;
       require(name: "Registerable"): RegisterableContract;
+      require(name: "SimpleStorage"): SimpleStorageContract;
       require(name: "Statusable"): StatusableContract;
       require(name: "WithDeployer"): WithDeployerContract;
       require(name: "WithEncoder"): WithEncoderContract;
@@ -49,6 +53,7 @@ export {
 } from "./BaseAccessControl";
 export { BaseDeployerContract, BaseDeployerInstance } from "./BaseDeployer";
 export { BaseFactoryContract, BaseFactoryInstance } from "./BaseFactory";
+export { BaseObjectContract, BaseObjectInstance } from "./BaseObject";
 export { BaseRegistryContract, BaseRegistryInstance } from "./BaseRegistry";
 export { ExecutorContract, ExecutorInstance } from "./Executor";
 export { LockableContract, LockableInstance } from "./Lockable";
@@ -63,6 +68,7 @@ export {
 } from "./OwnableContract";
 export { PausableContract, PausableInstance } from "./Pausable";
 export { RegisterableContract, RegisterableInstance } from "./Registerable";
+export { SimpleStorageContract, SimpleStorageInstance } from "./SimpleStorage";
 export { StatusableContract, StatusableInstance } from "./Statusable";
 export { WithDeployerContract, WithDeployerInstance } from "./WithDeployer";
 export { WithEncoderContract, WithEncoderInstance } from "./WithEncoder";

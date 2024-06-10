@@ -233,21 +233,25 @@ export interface BaseAccessControlInstance extends Truffle.ContractInstance {
     (
       owner: string,
       superAdmin: string,
+      admin: string,
       txDetails?: Truffle.TransactionDetails
     ): Promise<Truffle.TransactionResponse<AllEvents>>;
     call(
       owner: string,
       superAdmin: string,
+      admin: string,
       txDetails?: Truffle.TransactionDetails
     ): Promise<void>;
     sendTransaction(
       owner: string,
       superAdmin: string,
+      admin: string,
       txDetails?: Truffle.TransactionDetails
     ): Promise<string>;
     estimateGas(
       owner: string,
       superAdmin: string,
+      admin: string,
       txDetails?: Truffle.TransactionDetails
     ): Promise<number>;
   };
@@ -414,21 +418,25 @@ export interface BaseAccessControlInstance extends Truffle.ContractInstance {
       (
         owner: string,
         superAdmin: string,
+        admin: string,
         txDetails?: Truffle.TransactionDetails
       ): Promise<Truffle.TransactionResponse<AllEvents>>;
       call(
         owner: string,
         superAdmin: string,
+        admin: string,
         txDetails?: Truffle.TransactionDetails
       ): Promise<void>;
       sendTransaction(
         owner: string,
         superAdmin: string,
+        admin: string,
         txDetails?: Truffle.TransactionDetails
       ): Promise<string>;
       estimateGas(
         owner: string,
         superAdmin: string,
+        admin: string,
         txDetails?: Truffle.TransactionDetails
       ): Promise<number>;
     };
