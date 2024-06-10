@@ -1,0 +1,75 @@
+{
+  "contractName": "BaseCollectorage",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/core/objective/Collectorage/BaseCollectorage.sol\":\"BaseCollectorage\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/core/objective/Collectorage/BaseCollectorage.sol\":{\"keccak256\":\"0x2b7d4d0021b3d8f5c3650a5d56f18dd0318ac4435e168bd9cf646825a94817b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7b4a460a920b8c56097c493c5fef4a5714daaaebe5cc421f4542453c50fdb392\",\"dweb:/ipfs/QmbpMTt8859q91ie5W5WqDE88BzG9XkMNSgZqqvkfiHVso\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122066dd33a7a2117f6f12354ff640aca7e06f09e19b7b171097e70c3bc5a674714264736f6c634300080d0033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122066dd33a7a2117f6f12354ff640aca7e06f09e19b7b171097e70c3bc5a674714264736f6c634300080d0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "57:28:16:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "57:28:16:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract BaseCollectorage {}\n",
+  "sourcePath": "/Users/yemo/yemowithprivate/projects/yemowith/contracts/core/objective/Collectorage/BaseCollectorage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/core/objective/Collectorage/BaseCollectorage.sol",
+    "exportedSymbols": {
+      "BaseCollectorage": [
+        2540
+      ]
+    },
+    "id": 2541,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2539,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:16"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "BaseCollectorage",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2540,
+        "linearizedBaseContracts": [
+          2540
+        ],
+        "name": "BaseCollectorage",
+        "nameLocation": "66:16:16",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 2541,
+        "src": "57:28:16",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:54:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-06-10T11:54:44.476Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

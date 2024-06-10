@@ -1,8 +1,0 @@
-{
-    "projectName": "Yemowith",
-    "namespace": "Yemowith.Contracts",
-    "lang": 0,
-    "autoCodeGen": true,
-    "projectPath": "./src/solidity/contracts"
-}
-

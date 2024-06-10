@@ -1,0 +1,25 @@
+{
+  "extensions.ignoreRecommendations": true,
+  "extensions.disabled": ["juanblanco.solidity"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[solidity]": {
+    "editor.defaultFormatter": "JuanBlanco.solidity",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "editor.snippetSuggestions": "top"
+  },
+  "solidity.remappings": [],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.exclude": {
+    "./.v1": true
+  }
+}

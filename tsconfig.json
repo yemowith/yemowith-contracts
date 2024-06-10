@@ -1,35 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2018", "DOM"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "strict": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "strictNullChecks": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "paths": {
-      "@/*": ["./src/js"],
-      "@contracts": ["./build/typechain/src/solidity/contracts"]
-    },
-    "outDir": "build/ts"
+    "target": "ES2018",
+    "sourceMap": true,
+    "esModuleInterop": true
   },
-  "files": [
-    "./build/typechain/hardhat.d.ts",
-    "./src/js/global.d.ts",
-    "./hardhat.config.ts"
-  ],
-  "include": ["./src/js", "./build/ts", "./hardhat.config.ts"],
-  "exclude": [
-    "dist",
-    "./src/js/test/Dev",
-    ".archive",
-    "node_modules",
-    "build/ts"
-  ]
+  "include": ["./test/*.ts", "./types/**/*.ts"]
 }

@@ -1,0 +1,660 @@
+{
+  "contractName": "WithDeployer",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "deployer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "contractAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ContractDeployed",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_bytecode",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "_computeAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_bytecode",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deploy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_bytecode",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "initiateDeployment",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "bytecode",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deployContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "bytecode",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "computeContractAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"deployer\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"}],\"name\":\"ContractDeployed\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_bytecode\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"_salt\",\"type\":\"bytes32\"}],\"name\":\"_computeAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"bytecode\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"}],\"name\":\"computeContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_bytecode\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"_salt\",\"type\":\"bytes32\"}],\"name\":\"deploy\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"bytecode\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"}],\"name\":\"deployContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_bytecode\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"_salt\",\"type\":\"bytes32\"}],\"name\":\"initiateDeployment\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"_computeAddress(bytes,bytes32)\":{\"details\":\"Computes the address for a contract to be deployed via CREATE2.\",\"params\":{\"_bytecode\":\"The bytecode of the contract to be deployed.\",\"_salt\":\"A bytes32 salt value used to compute the address.\"},\"returns\":{\"_0\":\"computedAddress The precomputed address of the contract if deployed with the provided bytecode and salt.\"}},\"deploy(bytes,bytes32)\":{\"details\":\"Computes the address for a contract to be deployed via CREATE2, without actually deploying it.\",\"params\":{\"_bytecode\":\"The bytecode of the contract to be deployed.\",\"_salt\":\"A bytes32 salt value used to compute the address.\"},\"returns\":{\"_0\":\"computedAddress The precomputed address of the contract if deployed with the provided bytecode and salt.\"}},\"initiateDeployment(bytes,bytes32)\":{\"details\":\"Public function to initiate the deployment of a contract.\",\"params\":{\"_bytecode\":\"The bytecode of the contract to be deployed.\",\"_salt\":\"A bytes32 salt value used to create a deterministic address.\"},\"returns\":{\"_0\":\"contractAddress The address of the deployed contract.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/core/objective/Binders/WithDeployer.sol\":\"WithDeployer\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/core/libraries/Deployer/BaseDeployer.sol\":{\"keccak256\":\"0x835b5788a07582f6b6f936513346ecc075221f1bf4475473efe0a84782b74b8a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e3f996140dc6f10e5df79eaf177a1009d10523f76eeffcf495fbd57951c1510c\",\"dweb:/ipfs/QmPMU6Yndy45FaD23RnDSgBb8fiKCRkKLMH3N655Eeuzq4\"]},\"project:/contracts/core/objective/Binders/WithDeployer.sol\":{\"keccak256\":\"0x63bf350cafa7989fa440ae87ac344d451263e220ee59470259a09ed0637e6975\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6794f6468183b73fe80d2d49977fbebe7ff47e4e99bf5caf650504ddd259e8de\",\"dweb:/ipfs/QmXQakUhESQXnjwpJ27SCcJpczAVFpKiLVtcizyjzz3Eqj\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport \"../../libraries/Deployer/BaseDeployer.sol\";\n\nabstract contract WithDeployer is BaseDeployer {\n    function deployContract(\n        bytes memory bytecode,\n        bytes32 salt\n    ) external virtual returns (address) {\n        return initiateDeployment(bytecode, salt);\n    }\n\n    function computeContractAddress(\n        bytes memory bytecode,\n        bytes32 salt\n    ) external view virtual returns (address) {\n        return _computeAddress(bytecode, salt);\n    }\n}\n",
+  "sourcePath": "/Users/yemo/yemowithprivate/projects/yemowith/contracts/core/objective/Binders/WithDeployer.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/core/objective/Binders/WithDeployer.sol",
+    "exportedSymbols": {
+      "BaseDeployer": [
+        737
+      ],
+      "WithDeployer": [
+        2303
+      ]
+    },
+    "id": 2304,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2269,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:14"
+      },
+      {
+        "absolutePath": "project:/contracts/core/libraries/Deployer/BaseDeployer.sol",
+        "file": "../../libraries/Deployer/BaseDeployer.sol",
+        "id": 2270,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2304,
+        "sourceUnit": 738,
+        "src": "57:51:14",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 2271,
+              "name": "BaseDeployer",
+              "nameLocations": [
+                "144:12:14"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 737,
+              "src": "144:12:14"
+            },
+            "id": 2272,
+            "nodeType": "InheritanceSpecifier",
+            "src": "144:12:14"
+          }
+        ],
+        "canonicalName": "WithDeployer",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2303,
+        "linearizedBaseContracts": [
+          2303,
+          737
+        ],
+        "name": "WithDeployer",
+        "nameLocation": "128:12:14",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2286,
+              "nodeType": "Block",
+              "src": "281:58:14",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 2282,
+                        "name": "bytecode",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2274,
+                        "src": "317:8:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      },
+                      {
+                        "id": 2283,
+                        "name": "salt",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2276,
+                        "src": "327:4:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 2281,
+                      "name": "initiateDeployment",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 736,
+                      "src": "298:18:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes_memory_ptr_$_t_bytes32_$returns$_t_address_$",
+                        "typeString": "function (bytes memory,bytes32) returns (address)"
+                      }
+                    },
+                    "id": 2284,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "298:34:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 2280,
+                  "id": 2285,
+                  "nodeType": "Return",
+                  "src": "291:41:14"
+                }
+              ]
+            },
+            "functionSelector": "2bd7910b",
+            "id": 2287,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deployContract",
+            "nameLocation": "172:14:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2277,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2274,
+                  "mutability": "mutable",
+                  "name": "bytecode",
+                  "nameLocation": "209:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2287,
+                  "src": "196:21:14",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 2273,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "196:5:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2276,
+                  "mutability": "mutable",
+                  "name": "salt",
+                  "nameLocation": "235:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2287,
+                  "src": "227:12:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 2275,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "227:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "186:59:14"
+            },
+            "returnParameters": {
+              "id": 2280,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2279,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2287,
+                  "src": "272:7:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2278,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "272:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "271:9:14"
+            },
+            "scope": 2303,
+            "src": "163:176:14",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 2301,
+              "nodeType": "Block",
+              "src": "476:55:14",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 2297,
+                        "name": "bytecode",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2289,
+                        "src": "509:8:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      },
+                      {
+                        "id": 2298,
+                        "name": "salt",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2291,
+                        "src": "519:4:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 2296,
+                      "name": "_computeAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 679,
+                      "src": "493:15:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_bytes_memory_ptr_$_t_bytes32_$returns$_t_address_$",
+                        "typeString": "function (bytes memory,bytes32) view returns (address)"
+                      }
+                    },
+                    "id": 2299,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "493:31:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 2295,
+                  "id": 2300,
+                  "nodeType": "Return",
+                  "src": "486:38:14"
+                }
+              ]
+            },
+            "functionSelector": "62ca29ed",
+            "id": 2302,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "computeContractAddress",
+            "nameLocation": "354:22:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2292,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2289,
+                  "mutability": "mutable",
+                  "name": "bytecode",
+                  "nameLocation": "399:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2302,
+                  "src": "386:21:14",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 2288,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "386:5:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2291,
+                  "mutability": "mutable",
+                  "name": "salt",
+                  "nameLocation": "425:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2302,
+                  "src": "417:12:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 2290,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "417:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "376:59:14"
+            },
+            "returnParameters": {
+              "id": 2295,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2294,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2302,
+                  "src": "467:7:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2293,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "467:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "466:9:14"
+            },
+            "scope": 2303,
+            "src": "345:186:14",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2304,
+        "src": "110:423:14",
+        "usedErrors": [],
+        "usedEvents": [
+          621
+        ]
+      }
+    ],
+    "src": "32:502:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-06-04T07:07:04.061Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "_computeAddress(bytes,bytes32)": {
+        "details": "Computes the address for a contract to be deployed via CREATE2.",
+        "params": {
+          "_bytecode": "The bytecode of the contract to be deployed.",
+          "_salt": "A bytes32 salt value used to compute the address."
+        },
+        "returns": {
+          "_0": "computedAddress The precomputed address of the contract if deployed with the provided bytecode and salt."
+        }
+      },
+      "deploy(bytes,bytes32)": {
+        "details": "Computes the address for a contract to be deployed via CREATE2, without actually deploying it.",
+        "params": {
+          "_bytecode": "The bytecode of the contract to be deployed.",
+          "_salt": "A bytes32 salt value used to compute the address."
+        },
+        "returns": {
+          "_0": "computedAddress The precomputed address of the contract if deployed with the provided bytecode and salt."
+        }
+      },
+      "initiateDeployment(bytes,bytes32)": {
+        "details": "Public function to initiate the deployment of a contract.",
+        "params": {
+          "_bytecode": "The bytecode of the contract to be deployed.",
+          "_salt": "A bytes32 salt value used to create a deterministic address."
+        },
+        "returns": {
+          "_0": "contractAddress The address of the deployed contract."
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
